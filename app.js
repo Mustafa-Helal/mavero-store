@@ -1,7 +1,7 @@
 const API_URL = 'https://script.google.com/macros/s/AKfycbwicrtU-7j9iw9YXfj2xVpPXt0k8p6VVDY67IJVmkmmHCXfIuIMhIKQwU8d5u5XVyZe/exec'; // <-- حط رابط الـ Web App هنا
 let products = [];
 let activeFilter = 'All', searchTerm = '';
-let cart = JSON.parse(localStorage.getItem('mavero-cart') || '[]');
+let cart = JSON.parse(sessionStorage.getItem('mavero-cart') || '[]');
 const $ = s => document.querySelector(s);
 const grid = $('#productGrid'), drawer = $('#cartDrawer'), overlay = $('#overlay'), modal = $('#productModal');
 
@@ -71,7 +71,7 @@ function renderProducts(){
 }
 
 function saveCart(){
-  localStorage.setItem('mavero-cart', JSON.stringify(cart));
+  sessionStorage.setItem('mavero-cart', JSON.stringify(cart));
   renderCart();
 }
 
